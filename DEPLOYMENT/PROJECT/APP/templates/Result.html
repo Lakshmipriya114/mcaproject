@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  background-color: wheat;
+}
+
+.container {
+  width: 80%;
+  border: 3px solid black;
+  border-radius: 0.5em;
+  overflow: hidden;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.btn {
+  padding: 0.75rem 1.25rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border: none;
+}
+
+.btn:hover{
+  background-color: #ddd;
+}
+
+.btn.active {
+  background-color: lightgreen;
+}
+
+.sections {
+  background-color: lightgreen;
+}
+
+.content.active {
+  padding: 2rem;
+  display: block;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 1.5rem;
+  letter-spacing: 1.5px;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.content {
+  display: none;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="tabs">
+          <button class="btn btn1 active" id="1">Section 1</button>
+          <button class="btn btn2" id="2">Section 2</button>
+          <button class="btn btn3" id="3">Section 3</button>
+
+        </div>
+        <div class="sections">
+          <div class="content content1 active">
+            <h2><b><i>DOMAIN</b></h2></i><br><br>
+            <p>*  Datascience and Artificial Intelligence</p><br><br>
+            <h2><b><i>TECHNOLOGY</i></b></h2><br><br>
+            <p>*  Deep Learning</p>
+            <p>*  Convolution Neural Network</p>
+            <p>*  Artificial Neural Network</p>
+          </div>
+          <div class="content content2">
+            <h2><b><i>ARCHITECTURES</b></h2></i><br><br>
+            <p>*  Lenet Architectures</p>
+            <p>*  ResNet Architectures</p><br><br>
+
+            <h2><b><i>BEST PERFORMANCE ARCHITECTURE</i></b></h2><br><br>
+            <p>*  Lenet Architectures</p>
+          </div>
+          <div class="content content3">
+            <h2><b><i>ACCURACY AND LOSS</i></h2></b><br><br>
+            <p>*  The Accuracy Result Of Lenet is 99.0 %</p>
+            <p>*  The Hamming Loss Result Of Exception is 1.0 %</p>
+          </div>
+
+        </div>
+      </div>
+      <script>
+        const buttons = document.querySelectorAll("button");
+const sections = document.querySelectorAll(".content");
+
+
+buttons.forEach((btn)=>{
+  btn.addEventListener("click", ()=>{
+    buttons.forEach((btn)=>{
+      btn.classList.remove("active");
+    });
+    btn.classList.add("active");
+    const id = btn.id;
+    sections.forEach((section)=>{
+      section.classList.remove("active");
+    });
+    const req = document.getElementsByClassName(`content${id}`);
+    req[0].classList.add("active");
+  })
+})
+
+
+
+
+      </script>
+    
+</body>
+</html>

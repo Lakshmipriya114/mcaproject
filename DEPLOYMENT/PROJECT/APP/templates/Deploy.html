@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<style>
+    body {
+        background:url("/static/images/A4.jpg");
+        text-align: center;
+        text-transform: uppercase;
+        padding: 48px;
+        position: fixed;
+        background-position:center;
+        
+      }
+      
+      .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #aaa;
+        margin: 20px 0;
+        padding: 10px;
+        width: 100%;
+        min-height: 200px;
+        border: 2px #ccc solid;
+        color: #fff;
+      }
+      #one{
+        padding-bottom: 20px;
+        padding-left: -20%;
+        padding-right: -90%;
+        display: flex;
+        height: 600px;
+        border-style: inset;
+        align-items: center;
+        box-sizing:unset;
+        border-radius: 20px;
+        border-color: white;
+        align-items:center;
+        border-width: 5px;
+      }
+      #two{
+        padding-bottom: 20px;
+        display: flex;
+        height: 620px;
+        border-style: inset;
+        align-items: center;
+        border-radius: 20px;
+        border-color:white;
+        box-shadow: inset;
+        margin-left: 700px;
+        margin-top: -620px;
+
+      }
+      #button{
+        padding: 10px;
+        margin-bottom: -20%;
+        border-radius: 20px;
+        margin-top: 100px;
+        
+      }
+      #three{
+        margin-left: 150px;
+        padding-bottom: 60px;
+        color: whitesmoke;
+      }
+      #img{
+        border-radius: 20px;
+      }
+      #des{
+        color: black;
+        font-family: 'Courier New', Courier, monospace;
+        text-align: center;
+        font-weight: 100;
+        padding-top: 20px;
+        margin-top: 20%;
+        font-size: xx-large;
+        width: 200px;
+        height: 300px;
+        text-shadow: #ccc;
+        text-size-adjust: inherit;
+      }
+      #des1{
+        color: skyblue;
+        border-radius:20px;
+        width: 100px;
+        margin-left: 90px;
+      }
+
+
+      
+</style>
+<body>
+<center><h1 style="color: whitesmoke;">BIRDS SPECIES CLASSIFICATION</h1></center><br>
+
+<div class="row">
+    <div class="container">
+        <div class="col-sm-5 col-md-6" id="one" style="border-color:g;">
+            <h1 style="color: whitesmoke;">Upload Image</h1>
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" Value='Launch' id="button" style="margin-right: 200px;">
+            </form>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-sm-5 col-md-6" id="two">
+            {% if obj %}
+                <center>
+                    <center><h1 id="three">Test Image</h1></center>
+                    <center><img src="{{ obj.image.url }}" height="250" width="250" style="margin-left: 130px;" id="img"></center><br>
+                    <p></p><br>
+                
+                    <p></p>
+                    <h2 style="color:white;font-size:larger;margin-left: 130px;">{{predict | upper}}</h2>
+                    <br>
+                    <br>
+
+                </center>
+            {% endif %}
+        </div>
+    </div>
+    
+</div>
+</body>
+</html>
